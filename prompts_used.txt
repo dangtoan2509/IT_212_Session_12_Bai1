@@ -1,0 +1,64 @@
+# CHUỖI PROMPT SỬ DỤNG TRONG QUY TRÌNH PHÂN TÍCH NGHIỆP VỤ eKYC (ABC BANK)
+(Tài liệu tham khảo dành cho sinh viên - File 01)
+
+Dưới đây là chuỗi prompt được thiết kế theo tư duy phân rã bài toán (Decomposition) và đóng vai (Role-playing) để hướng dẫn AI thực hiện phân tích nghiệp vụ chi tiết cho hệ thống mở tài khoản trực tuyến eKYC của ABC Bank.
+
+---
+
+### PROMPT 1: THIẾT LẬP VAI TRÒ VÀ PHÂN TÍCH CẤU TRÚC HỆ THỐNG BAN ĐẦU
+**Mục tiêu:** Định hình vai trò chuyên gia cho AI, yêu cầu phân tích các thành phần cốt lõi bao gồm Actors, Business Flow, Functional & Non-Functional Requirements, Assumptions & Business Rules.
+
+```text
+Bạn là một Senior Business Analyst có 10 năm kinh nghiệm trong lĩnh vực FinTech và Ngân hàng số.
+
+Bối cảnh dự án: Ngân hàng số ABC Bank đang muốn số hóa hoàn toàn quy trình mở tài khoản và phát hành thẻ trực tuyến. Thay vì ra quầy, khách hàng có thể mở tài khoản thông qua quy trình định danh điện tử eKYC (Electronic Know Your Customer). 
+Luồng nghiệp vụ cơ bản: Khách hàng tải app -> Đăng ký thông tin cơ bản -> Chụp ảnh 2 mặt CCCD -> Quét khuôn mặt (Liveness check) -> Hệ thống đối chiếu dữ liệu -> Cấp số tài khoản tự động nếu hợp lệ. 
+Mục tiêu cốt lõi của ngân hàng là "Zero manual operation" – tự động hóa thẳng 100% (Straight-Through Processing - STP), giảm thiểu tối đa sự can thiệp thủ công của giao dịch viên.
+
+Nhiệm vụ của bạn: Hãy phân tích hệ thống chi tiết và trả về tài liệu phân tích nghiệp vụ bằng ngôn ngữ Markdown bao gồm các phần sau:
+1. Các Actors (Các tác nhân tham gia hệ thống và vai trò của họ).
+2. Business Flow (Luồng nghiệp vụ chi tiết từng bước bao gồm luồng chuẩn Happy Path và luồng lỗi Exception).
+3. Functional Requirements (Yêu cầu chức năng của hệ thống phân chia theo phân hệ cụ thể).
+4. Non-Functional Requirements (Yêu cầu phi chức năng: bảo mật thông tin nhạy cảm, hiệu năng xử lý, tính sẵn sàng và tuân thủ luật pháp).
+5. Assumptions & Business Rules (Các giả định và quy tắc nghiệp vụ của ngân hàng liên quan đến hạn mức giao dịch, xác thực sinh trắc học và quản lý rủi ro).
+
+Yêu cầu tài liệu viết bằng tiếng Việt, sử dụng các thuật ngữ chuyên ngành ngân hàng số một cách chuyên nghiệp (ví dụ: STP, CIF, OCR, Liveness Check, AML, PEP, Quyết định 2345/QĐ-NHNN, v.v.).
+```
+
+---
+
+### PROMPT 2: CHUYỂN ĐỔI ARTIFACTS - XÂY DỰNG DANH SÁCH USER STORIES & USE CASES
+**Mục tiêu:** Yêu cầu AI chuyển đổi các phân tích nghiệp vụ ở trên thành tài liệu thiết kế phần mềm chi tiết, bao gồm User Stories chuẩn Agile và đặc tả các Use Case cốt lõi.
+
+```text
+Dựa trên tài liệu phân tích nghiệp vụ hệ thống eKYC của ABC Bank đã thiết lập ở trên, bạn hãy thực hiện bước tiếp theo của một Business Analyst: chuyển đổi các phân tích thành tài liệu kỹ thuật phát triển phần mềm (Software Requirements Artifacts).
+
+Cụ thể, hãy bổ sung vào tài liệu các mục sau:
+1. Danh sách User Stories: 
+   - Viết theo chuẩn: "As a [User Role], I want to [Action] so that [Benefit]".
+   - Phân loại rõ ràng theo đối tượng: Khách hàng (Customer), Kiểm soát viên (Compliance Officer/Operator), và Hệ thống (System).
+   - Đảm bảo bao phủ toàn bộ luồng đăng ký, OCR, quét khuôn mặt, tích hợp C06/NFC và cấp tài khoản.
+
+2. Danh sách Use Cases:
+   - Liệt kê toàn bộ các Use Case cốt lõi của hệ thống dưới dạng bảng tổng hợp bao gồm: Mã Use Case, Tên Use Case, Actor chính, Mô tả ngắn gọn.
+   - Chọn ra ít nhất 3 Use Case cốt lõi nhất (ví dụ: Chụp ảnh CCCD & OCR, Quét khuôn mặt sinh trắc học, Cấp tài khoản tự động STP) để viết đặc tả chi tiết bao gồm: 
+     + Tên Use Case, Actor, Tiền điều kiện (Pre-conditions), Hậu điều kiện (Post-conditions).
+     + Luồng xử lý chính (Basic Flow).
+     + Luồng ngoại lệ/lỗi (Alternative/Exception Flows).
+
+Hãy kết hợp phần bổ sung này vào cuối file phân tích hệ thống hiện tại để tạo thành một tài liệu phân tích nghiệp vụ hoàn chỉnh v1.1.
+```
+
+---
+
+### PROMPT 3: RÀ SOÁT TUÂN THỦ PHÁP LÝ VÀ CHUẨN HÓA BẢO MẬT (PROMPT NÂNG CAO)
+**Mục tiêu:** Rà soát và cập nhật tài liệu đảm bảo tuân thủ các thông tư mới nhất của Ngân hàng Nhà nước Việt Nam về định danh điện tử và sinh trắc học.
+
+```text
+Dưới vai trò Senior BA FinTech, hãy rà soát lại toàn bộ tài liệu BRD của hệ thống eKYC ABC Bank để đảm bảo tuân thủ đầy đủ các văn bản pháp luật hiện hành tại Việt Nam:
+1. Quyết định 2345/QĐ-NHNN của Ngân hàng Nhà nước về triển khai giải pháp an toàn, bảo mật trong thanh toán trực tuyến và thanh toán thẻ ngân hàng (đối khớp sinh trắc học với Cơ sở dữ liệu quốc gia về dân cư).
+2. Thông tư 16/2020/TT-NHNN hướng dẫn mở và sử dụng tài khoản thanh toán bằng phương thức điện tử (giới hạn hạn mức 100 triệu/tháng).
+3. Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân (đồng ý điều khoản xử lý dữ liệu sinh trắc học).
+
+Hãy chuẩn hóa lại các quy tắc nghiệp vụ (Business Rules) và bổ sung các yêu cầu phi chức năng liên quan đến bảo mật (như mã hóa phần cứng HSM, mã hóa cơ sở dữ liệu nhạy cảm) vào tài liệu.
+```
